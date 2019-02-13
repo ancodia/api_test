@@ -9,3 +9,9 @@ class Employee:
         self.age = age
 
         self.profile_image = profile_image
+
+    @property
+    def to_string(self):
+        object_string = 'id: %s, name: %s, salary:%s, age: %s' \
+                        % (self.id, self.name, self.salary, self.age)
+        return object_string

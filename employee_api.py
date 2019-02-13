@@ -21,9 +21,9 @@ def create_employee(name=None, salary=None, age=None, profile_image=None):
 
     response_json = response.json()
     employee_id = response_json['id']
-    print('>Employee was created, ID:%s' % employee_id)
-
     employee = Employee(id=employee_id, name=name, salary=salary, age=age, profile_image=profile_image)
+    print('>Employee was created')
+    print(employee.to_string)
     return employee
 
 
@@ -44,6 +44,9 @@ def get_employee(employee_id):
 
 
 def compare_employee_objects(employee1, employee2):
+    print('>Compare employee objects:')
+    print('Employee1: ' + employee1.to_string)
+    print('Employee2: ' + employee2.to_string)
     assert employee1.id == employee2.id
     assert employee1.name == employee2.name
     assert employee1.salary == employee2.salary
@@ -66,12 +69,14 @@ def update_employee(employee, name=None, salary=None, age=None):
     response = requests.put(url, json=data)
     status = response.status_code
     assert status == 200
-    print('>Employee was updated')
 
     response_json = response.json()
     employee.name = response_json['name']
     employee.salary = response_json['salary']
     employee.age = response_json['age']
+
+    print('>Employee was updated')
+    print(employee.to_string)
 
 
 def delete_employee(employee):
