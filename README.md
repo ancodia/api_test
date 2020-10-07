@@ -1,4 +1,4 @@
-# tradeix_test
+# api test
 To run:
 
 Go to directory:
